@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+%\begin{align*}
+%\end{align*}
+ 
+\begin{document}
+ 
+\title{Homework 4} 
+\author{J.E. Paguyo \\ MAT 185A} 
+\maketitle
+ 
+\begin{exercise}{1} Let $f: G \to \C$ be a continuous function on an open set $G \subset \C$ and let $\gamma : [a,b] \to \C$ be a piecewise smooth curve in $G$. 
+\end{exercise}
+ 
+\noindent a) Find a counterexample demonstrating that the inequality 
+\begin{align*}
+\left| \int_{\gamma} f(z) \, dz \right| \leq \int_{\gamma} |f(z)| \, dz
+\end{align*}
+no longer makes sense for integrals along a curve $\gamma$. \\ \\
+{\em Proof}. 
+$\hfill \qed$ \\
+
+\noindent b) Show that 
+\begin{align*}
+\left| \int_{\gamma} f(z) \right| \leq \int_{\gamma} |f(z)| \, |dz|
+\end{align*}
+where the latter is defined by 
+\begin{align*}
+\int_{\gamma} |f(z)| \, |dz| = \int_a^b |f(\gamma (t))||\gamma'(t)| \, dt 
+\end{align*} \\ \\ 
+{\em Proof}.
+$\hfill \qed$ \\
+
+\begin{exercise}{2} Deduce from Exercise 1 that 
+\begin{align*}
+\left| \int_{\gamma} f \right| \leq Ml(\gamma)
+\end{align*}
+where $M \geq 0$ is a real constant such that $|f(z)| \leq M$ for all points $z$ on $\gamma$ and 
+\begin{align*}
+l(y) = \int_a^b |\gamma'(t)| \, dt = \int_a^b \sqrt{x'(t)^2 + y'(t)^2} \, dt
+\end{align*}
+is the length of the curve. 
+\end{exercise}
+ 
+\begin{proof}
+
+\end{proof}
+
+\begin{exercise}{3} Let $\gamma$ be the arc of the circle $|z| = 2$ in the first quadrant $(x,y>0)$. Establish the inequality
+\begin{align*}
+\left| \int_{\gamma} \frac{dz}{1 + z^2} \right| \leq \frac{\pi}{3}
+\end{align*}
+without performing the integral explicitly. 
+\end{exercise}
+ 
+\begin{proof}
+
+\end{proof}
+
+\begin{exercise}{4} 
+\end{exercise}
+ 
+\noindent a) {\em Proof}.
+$\hfill \qed$ \\
+
+\noindent b) {\em Proof}.
+$\hfill \qed$ \\
+
+\noindent c) {\em Proof}.
+$\hfill \qed$ 
+
+\begin{exercise}{5} Let $f,g$ be continuous functions, $c_1,c_2$ complex constants, and $\gamma,\gamma_1,\gamma_2$ piecewise smooth curves. Show that
+\end{exercise}
+ 
+\noindent a) $\int_{\gamma} (c_1f+c_2g) = c_1\int_{\gamma} f + c_2\int_{\gamma} g$ \\ \\
+{\em Proof}.
+\begin{align*}
+\int_{\gamma} (c_1f+c_2g) &= \int_a^b (c_1f(\gamma(t)) + c_2g(\gamma(t))) \gamma'(t) \, dt = \int_a^b (c_1f(\gamma(t)) \gamma'(t) + c_2g(\gamma(t)) \gamma'(t) ) \, dt \\ 
+&= \int_a^b c_1f(\gamma(t)) \gamma'(t) \, dt + \int_a^b c_2g(\gamma(t)) \gamma'(t) \, dt \\ &= c_1 \int_a^b f(\gamma(t)) \gamma'(t) \, dt + c_2 \int_a^b g(\gamma(t)) \gamma'(t) \, dt \\
+&= c_1\int_{\gamma} f + c_2\int_{\gamma} g
+\end{align*}
+$\hfill \qed$ \\
+
+\noindent b) $\int_{-\gamma} f = -\int_{\gamma} f$ \\ \\
+{\em Proof}.
+$\hfill \qed$ \\
+
+\noindent c) $\int_{\gamma_1 + \gamma_2} f = \int_{\gamma_1} f + \int_{\gamma_2} f$ \\ \\ 
+{\em Proof}.
+$\hfill \qed$ 
+
+\end{document}
