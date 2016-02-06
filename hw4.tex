@@ -62,9 +62,35 @@ where $M \geq 0$ is a real constant such that $|f(z)| \leq M$ for all points $z$
 l(y) = \int_a^b |\gamma'(t)| \, dt = \int_a^b \sqrt{x'(t)^2 + y'(t)^2} \, dt
 \end{align*}
 is the length of the curve. 
+
+
+
 \end{exercise}
  
 \begin{proof}
+
+(a) Let $f(z)=2z$,\\
+$r:[0,1]\to \CC: t\mapsto 1+it$, $r'(t)=i$\\
+$f(r(t))=2(1+it)=2+(2t)i$\\
+$\int_r f(z) dz=\int^1_0 [2+(2t)i]i dt$\\
+$=\int_0^1 [2i-(2t)]dt$\\
+$=2it-t^2|_0^1=2i-1$\\
+$\R\int_r f(z) dz|=\sqrt{5}$\\
+But $\int_r|f(z)|dz =\int_0^1 |2+(2t)i| idt=2i\int_0^1\sqrt{1+t^2}dt$ is imaginary.\\
+Since you can not compare a real number with an imaginary number, the inequality no longer make sense.\\
+
+(b)\\
+For a complex value function $g(t)$ on $[a,b]$,\\
+We have Re$\int_a^b g(t)=\int_a^b $Re $g(t) dt $, and Re$\int_a^b g(t) dt|\leq \int _a^b$ Re $|g(t)|dt$.\\
+$\int_a^b g(t) dt =\int_a^b u(t) dt+i \int_a^b v(t) dt $ if $g(t) =u(t)+iv(t)$\\
+Let $\int_a^b g(t) dt =r e^{i\theta}$ for fixed $r$ and $\theta$.\\
+$r\geq 0$, so that $r=e^{-i\theta}\int_a^b g(t) dt=\int_a^b e^{-i\theta}g(t) dt$\\
+$r=$Re $r=$ Re$\int_a^b e^{-i\theta} g(t) dt =\int_a^b$ Re$(e^{-i\theta}g(t) dt$\\
+Re$(e^{-i\theta} g(t))\leq |e^{-i\theta}g(t)|=|g(t)|$ since $|e^{-i\theta}|=1$\\
+Thus, $\int_a^b$Re $(e^{-i\theta} g(t) dt\leq \int_a^b |g(t)| dt$\\
+$\R |\int_a^b g(t) dt|=r \leq \int_a^b |g(t)| dt$\\
+By $|zz'|=|z||z'|$\\
+$\int_r f(z)| =|\int_a^b f(t) r'(t) dt|\leq \int_a^b |f(r(t)) r'(t)| dt=\int_a^b |f(r(t))|r'(t)|dt$.\\
 
 \end{proof}
 
