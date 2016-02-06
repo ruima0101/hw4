@@ -1,0 +1,243 @@
+\documentclass[10pt,two side,openright]{article}
+\usepackage{hyperref}
+\usepackage{times}
+\usepackage{enumerate}
+\usepackage{pstricks}
+\usepackage{pst-all}
+\usepackage{color}
+ \usepackage{pstcol,pst-node,pst-coil}
+\usepackage[dvips]{graphics}
+\usepackage{epic}
+\usepackage{amsfonts,amsmath,amsthm,amssymb,euscript,amscd,mathpazo}
+\usepackage[english]{babel}
+\usepackage[all,cmtip]{xy}
+\pagestyle{plain}
+\usepackage{float}
+\pagestyle{headings}
+\setlength{\parindent}{3ex}
+\setlength{\parskip}{1.5ex plus0.5ex minus 0.5ex}
+\setlength{\textwidth}{14cm}
+\setlength{\oddsidemargin}{1cm}
+\setlength{\evensidemargin}{1cm}
+\setlength{\textheight}{20.5cm}
+\newcommand{\newln}{\\&\quad\quad{}}
+\newcommand{\parenthnewln}{\right.\\&\left.\quad\quad{}}
+
+\newcommand{\sub}{\subset} 
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\8}{\bar}
+\newcommand{\maps}{\mapsto}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\e}{\epsilon}
+\newcommand{\del}{\delta}
+\newcommand{\f}{\frac}
+\newcommand{\ol}{\overline}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Par}{\partial}
+\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+
+
+\begin{document} 
+\title{Homework 4}
+\author{Nick LaForge}
+\date{\today}
+\maketitle 
+
+\section{Question 1}
+Let $f: G \to \C$ be a continuous function on an open set $G \subset \C$ and let $\gamma: [a,b] \to \C$ be a piecewise smooth curve in $G$. \newline \newline
+(a) Find a counterexample demonstrating that the inequality 
+\[ \left| \int_{\gamma} f(z) dz \right| \leq \int_{\gamma} | f(z)| dz \] 
+no longer makes sense for integrals along a curve $\gamma$.  
+\begin{proof}
+Let $f(z) = z$ and $\gamma$ be a straight line from $0 \to 1+i$. Then I have that 
+\[ \gamma(t) = (1+i)t, \ \ \ t \in [0,1] \] 
+\[ \gamma'(t) = 1 + i. \] 
+And then I have that $f(\gamma(t)) = t+it.$ Taking the integral I have that, 
+\begin{align*}
+\left| \int_{\gamma} f(z) dz \right| &= \left| (i+1) \int_{0}^{1} (t+ it) dt \right| \\
+						 &= |i| \\
+						 &= 1. 
+\end{align*}
+Now taking the $|f(\gamma(t))|$ I have that $|f(\gamma(t))| = \sqrt(2)|t|$. Now by this into the right side of the inequality I obtain
+\begin{align*}
+\int_{\gamma}|f(z)| dz &= \int_{0}^{1}\sqrt{2}|t|(1+i) dt \\
+				 &=  \sqrt(2)(1+1)\int_{0}^{1} t dt \\
+				 &= \f{1+i}{\sqrt{2}}. 
+\end{align*} 
+if you calculate the right hand side you are going to get an approximation of $0.707107 +0.707107i$, and therefore, 
+\[ \left| \int_{\gamma} f(z) dz \right| \not\leq \int_{\gamma} | f(z)| dz \] 
+\end{proof}
+(b) Show that 
+\[ \left| \int_{\gamma}f(z) \right| \leq \int_{\gamma} |f(z)||dz| \] 
+where the latter is defined by 
+\[ \int_{\gamma}|f(z)||dz| = \int_{a}^{b}|f(\gamma (t))|| \gamma '(t)| dt. \] 
+
+\begin{proof}
+For a complex-valued function $g(t)$ on $[a,b]$, I have 
+\[ \Re\int_{a}^{b} g(t) dt = \int_{a}^{b} \Re g(t) dt, \] 
+since $\int_{a}^{b} g(t) dt = \int_{a}^{b} u(t) dt + i \int_{a}^{b} v(t) dt$ if $g(t) =  u(t) + iv(t)$. Then we may use this fact to prove question (b). In Calculus we learned how to prove this inequality for $g$ that are real-valued, but here $g$ is complex-valued. Therefore, for our proof, I shall let $\int_{a}^{b} g(t) dt = re^{i\theta}$ for fixed $r$ and $\theta,$ where $r \geq 0,$ so that $r = e^{-i\theta} \int_{a}^{b} g(t) dt = \int_{a}^{b} e^{-i\theta} g(t) dt.$ Thus, 
+\[ r = \Re r = \Re \int_{a}^{b} e^{-i\theta} g(t) dt = \int_{a}^{b} \Re(e^{-i\theta}g(t)) dt. \] 
+Then, 
+\[\Re(e^{-i\theta}g(t)) \leq |e^{-i\theta}g(t) | = |g(t)|, \ \ \ \ \ \text{since $|e^{-i\theta}| = 1.$}\] 
+Therefore, $\int_{a}^{b} \Re(e^{-i\theta}g(t))dt \leq \int_{a}^{b} |g(t)| dt$, so I have that 
+\[ \left| \int_{a}^{b} g(t) dt \right| = r \leq \int_{a}^{b} |g(t)| dt. \] 
+Using this fact and $|zz'| = |z||z'|$, I have 
+\[ \left |\int_{\gamma} f \right| = \left | \int_{a}^{b} f(\gamma(t)) \gamma '(t) dt \right| \leq \int_{a}^{b} |f(\gamma(t))\gamma '(t) | dt = \int_{a}^{b} |f(\gamma(t))|| \gamma' (t)| dt.\] 
+\end{proof} 
+
+\section{Question 2} 
+Deduce from Question 1 that 
+\[ \left| \int_{\gamma} f \right| \leq M\ell(y) \]
+Where $ M \geq 0$ is a real constant such that $|f(z)| \leq M$ for all points $z$ on $\gamma$ and 
+\[ \ell(\gamma) = \int_{a}^{b} |\gamma '(t)| = \int_{a}^{b} \sqrt{ x'(t)^{2} + y'(t)^2} dt\] 
+is the length of the curve.
+
+\begin{proof}
+from Question 1 we have that
+\begin{align*} \left |\int_{\gamma} f \right| &= \left | \int_{a}^{b} f(\gamma(t)) \gamma '(t) dt \right| \\
+                                                                 &\leq \int_{a}^{b} |f(\gamma(t))||\gamma '(t) | dt \\
+                                                                 &= \int_{a}^{b} M| \gamma' (t)| dt \\
+                                                                 &= M \int_{a}^{b} |\gamma '(t)| dt \\
+                                                                 & = M \int_{a}^{b}  \sqrt{ x'(t)^{2} + y'(t)^2} dt \\
+                                                                 & = M\ell(\gamma).
+\end{align*}
+I may pull at the $M$ because it is  a $\Re(z)$. 
+\end{proof}
+
+\section{Question 3} 
+Let $\gamma$ be that arc of the circle $|z| = 2$ in the first quadrant $(x,y > 0$). \newline 
+Establish the inequality 
+\[ \left| \int_{\gamma} \f{dz}{1+z^{2}} \right| \leq \f{\pi}{3} \]
+without performing the integral explicitly. 
+\begin{proof}
+Since I am in quadrant one, the $\arg\theta$ is $0 \leq \theta \leq \f{\pi}{2}$ with $r = 2.$ Therefore I have that,
+\begin{align*}
+\left|\int_{\gamma} \f{dz}{1+z^{2}} \right| &\leq \int_{\gamma}\left|\f{dz}{1+ z^{2}} \right| \\
+`							    &\leq \int_{\gamma}\left|\f{1}{1+z^{2}}\right||dz| \\ 
+							    &\leq \int_{\gamma}\f{1}{|1+z^{2}|}2 \cdot \f{\pi}{2} \\ 
+							    &\leq \int_{\gamma} \f{1}{|1| + |z|^{2}} \cdot \pi \\
+							    &\leq \f{\pi}{5} \leq \f{\pi}{3}. 
+\end{align*}
+
+\end{proof}
+\section{Question 4} 
+compute $\int_{\gamma} f(z) dz$ for the following 
+\begin{enumerate}[(a)] 
+\item $f(z) = -y^{2} + x^{2} -2ixy$ and $\gamma$ the straight line from $0$ to $-1-i.$ 
+\item $f(z) = (2+z)/z$ and $\gamma$ the semi-circle $z = \exp(i\theta),$ $0 \leq \theta \leq \pi$. 
+\item $f(z) = 1/z$ and $\gamma$ any path in the right half plane $\Re(z) \geq 0$ beginning at $-i$, ending at $i$ avoiding the orgin. 
+\end{enumerate} 
+
+\begin{proof}
+For part (a), I have that the complex function is defined as \newline $f(z) = -y^{2} +x^{2} -2ixy$, and that $\gamma$ is a straight line ranging from $0 \to -1-i$. I would encourage our readers to draw this on the number line and indicate what this line looks like. Now, I have the function $\gamma$ with respect to $t$ defined as,
+\begin{align*}
+\gamma(t) &= 0 + (\text{difference of starting point to ending point})t \\
+                 &= 0 + ( -1 -i -0)t \\
+                 &= 0 + ( -1 -i)t \ \ \ \ \ t \in [0,1]. 
+\end{align*}
+Let's now check that $0 \leq t \leq 1$ is our correct bounds,
+\[ \gamma(0) = (-1 -i)(0) = 0 \ \ \ \ \ \ \text{and} \ \ \ \ \ \ \gamma(1) = (-1-i)(1) = (-1-i).\] 
+Therefore, these bounds check out because we have remained in our function $\gamma(t).$ Now I may plug $f(\gamma(t))$ and $\gamma'(t)$ to obtain my function with respect to $dt.$
+\[f(\gamma(t)) = -(-t)^{2} + (-t)^{2} - 2i(-t)(-t) = -t^{2} + t^{2} -2it^{2} = -2it^{2}, \] 
+\[\gamma'(t)) = -1 -i.\] 
+And therefore I have that 
+\begin{align*} 
+\int_{\gamma}f(z)dz &= \int_{0}^{1}-2it^{2}(-1-i) dt \\
+			       &= -2i(-1-i)\int_{0}^{1} t^{2} dt \\
+			       &= -\f{2i(-1-i)}{3}t^{2}\Big|_{0}^{1} \\
+			       &=  -\f{2}{3} +\f{2}{3}i 
+\end{align*}
+\end{proof}
+
+
+\begin{proof}
+For part (b), I have that the complex function is defined as \newline $f(z) = (2+z)/z$, and that $\gamma$ is the semi-circle ranging from $0 \to \pi$. Now, I have the function $\gamma$ with respect to $t$ defined as
+\[\gamma(t) = 1\cdot e^{it} \ \ \ \ \ t \in [0, \pi]. \]
+Now I may plug $f(\gamma(t))$ and $\gamma'(t)$ to obtain my function with respect to $dt.$
+\[f(\gamma(t)) = \f{2+e^{it}}{e^{it}},\] 
+\[ \gamma '(t) = ie^{it}. \] 
+And therefore I have that 
+\begin{align*} 
+\int_{\gamma}f(z)dz &= \int_{0}^{\pi} \f{2+e^{it}}{e^{it}}ie^{it} dt \\
+			       &= \int_{0}^{\pi} (2i +ie^{it}) dt \\
+			       &= \int_{0}^{\pi} 2i dt + \int_{0}^{\pi} ie^{it} dt \\
+			       &= 2it\Big|_{0}^{\pi} + \f{i}{i}e^{it}\Big|_{0}^{\pi} \\
+			       &= -2 + 2\pi i.
+\end{align*}
+
+\end{proof}
+
+\begin{proof}
+For part (c), I have that the complex function is defined as \newline $f(z) = 1/z.$ Let's choose $\gamma$ to be a semi-circle ranging from $-\pi/2 \to \pi/2.$ I have the function $\gamma$ with respect to $t$ and its derivative defined as 
+\[\gamma(t) = 1\cdot e^{it} \ \ \ \ \ t \in [-\pi/2, \pi/2]. \]
+Now I may plug $f(\gamma(t))$ and $\gamma'(t)$ to obtain my function with respect to $dt.$
+\begin{align*}
+\int_{\gamma} \f{1}{z} dz &= i \int_{-\f{\pi}{2}}^{\f{\pi}{2}} \f{1}{e^{it}}e^{it}dt   \\
+				      &= i  \int_{-\f{\pi}{2}}^{\f{\pi}{2}}  1 dt \\
+				      &= it \Big|_{-\f{\pi}{2}}^{\f{\pi}{2}} \\
+				      &= \pi i. 
+\end{align*}
+
+\end{proof} 
+
+\section{Question 5} 
+Let $f,g$ be a continuous functions, $c_{1},c_{2}$ complex constants and $\gamma, \gamma_{1}, \gamma_{2}$ piecewise smooth curves. Show that 
+\begin{enumerate}[(a)] 
+\item $\int_{\gamma}(c_{1}f +c_{2}g) = c_{1}\int_{\gamma}f + c_{2}\int_{\gamma}g$
+\item $\int_{-\gamma}f = -\int_{\gamma}f$ 
+\item $\int_{\gamma_{1} +\gamma_{2}} f = \int_{\gamma_{1}} f + \int_{\gamma_{2}}f,$
+\end{enumerate} 
+
+where $\gamma_{1} + \gamma_{2}$ denotes concatenation of curves. 
+
+\begin{proof} 
+for (a) I want to show that, 
+\[ \int_{\gamma}(c_{1}f +c_{2}g) = c_{1}\int_{\gamma}f + c_{2}\int_{\gamma}g.\] 
+Since $f,g$ are piecewise continuous on $\gamma$; that is, the real and imaginary parts
+\[u[x(t),y(t)] \ \ \ \ \ \text{and} \ \ \ \ \ v[x(t),y(t)] \]
+of $f[z(t)],g[(z(t)]$ are piecewise continuous functions of t. I may define the linear integral of $f,g$ along $\gamma$ as
+\begin{align*}
+\int_{\gamma}(c_{1}f(z) +c_{2}g(z)) dz &= \int_{a}^{b}\left[c_{1}f[z(t)]z'(t) + c_{2}g[z(t)]z'(t)\right] dt \\
+							  &= \int_{a}^{b} c_{1}f[z(t)]z'(t) dt + \int_{a}^{b} c_{2}g[z(t)]z'(t) dt \\	
+							  &= c_{1}\int_{a}^{b} f[z(t)]z'(t) dt + c_{2}\int_{a}^{b} g[z(t)]z'(t) dt \\
+							  &= c_{1}\int_{\gamma} f(z) dz + c_{2} \int_{\gamma} g(z) dz.
+\end{align*} 
+\end{proof} 
+
+\begin{proof}
+for (b) I want to show that, 
+\[ \int_{-\gamma}f = -\int_{\gamma}f. \]
+Since $f$ is piecewise continuous on $\gamma$; that is, the real and imaginary parts
+\[u[x(t),y(t)] \ \ \ \ \ \text{and} \ \ \ \ \ v[x(t),y(t)] \]
+of $f[z(t)]$ is a piecewise continuous functions of t. I may define the linear integral of $f$ along $\gamma$ as
+\[ \int_{-\gamma} f(z) dz = \int_{-b}^{-a}f[z(-t)][-z'(-t)] dt, \] 
+and by changing the variable from $ u = -t$ and rearranging the limits of $a,b$ according to $u$ I have that, 
+\[ -\int_{b}^{a} f[z(u)][-z'(u)]du. \] 
+Therefore, 
+\begin{align*}
+\int_{-\gamma} f(z) dz &= \int_{-b}^{-a}f[z(-t)][-z'(-t)] dt \\
+				  &= -\int_{b}^{a} f[z(u)][-z'(u)]du \\
+				  &= -\int_{a}^{b} f[z(u)[z'(u)]dz \\
+				  & = -\int_{\gamma} f(z) dz. 
+\end{align*}
+\end{proof}
+
+\begin{proof}
+for (c) I want to show that, 
+\[ \int_{\gamma_{1} +\gamma_{2}} f = \int_{\gamma_{1}} f + \int_{\gamma_{2}}f. \]
+Since $f$ is piecewise continuous on $\gamma$; that is, the real and imaginary parts
+\[u[x(t),y(t)] \ \ \ \ \ \text{and} \ \ \ \ \ v[x(t),y(t)] \]
+of $f[z(t)]$ is piecewise continuous functions of t. If $\gamma$ consists of a contour $\gamma_{1}$ from $a_{1}$ to $b_{1}$ and a contour $\gamma_{2}$ from $a_{2}$ to $b_{2}$ then it must be that $b_{1} = a_{2}$ and therefore, 
+\begin{align*}
+\int_{\gamma_{1} +\gamma_{2}} f(z) dz &= \int_{a_{1} + a_{2}}^{b_{1}+ b_{2}} f[z(t)]z'(t) dt\\						     
+						      &=  \int_{a_{1}}^{b_{1}} f[z(t)]f'(z) dt + \int_{a_{2} = b_{1}}^{b_{2}} f[z(t)]z'(t) dt \\ 
+						        &= \int_{\gamma_{1}} f(z) dz + \int_{\gamma_{2}} f(z) dz. 
+						      \end{align*}
+\end{proof}
+
+\end{document}
